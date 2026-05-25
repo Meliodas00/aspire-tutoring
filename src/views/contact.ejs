@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <meta name="description"
+        content="Contact Matthew Thompson for private tuition in Southampton, Winchester and Romsey." />
+
+    <title><%= title %></title>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#07111f">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+        crossorigin="anonymous"></script>
+
+    <style>
+
+        :root {
+            --bg: #07111f;
+            --card: rgba(255,255,255,0.06);
+            --text: #f5f7fb;
+            --muted: #b8c2d0;
+            --primary: #60a5fa;
+            --secondary: #8b5cf6;
+            --border: rgba(255,255,255,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Background Blurs */
+
+        .bg-blur {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.22;
+            z-index: -1;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        .bg-one {
+            background: #2563eb;
+            top: -200px;
+            left: -200px;
+        }
+
+        .bg-two {
+            background: #7c3aed;
+            bottom: -250px;
+            right: -200px;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,100% {
+                transform: translateY(0px) translateX(0px);
+            }
+
+            50% {
+                transform: translateY(40px) translateX(30px);
+            }
+
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background: rgba(7, 17, 31, 0.72);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 18px 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.78) !important;
+            margin-left: 18px;
+            transition: 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .user-badge {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            padding: 10px 18px;
+            border-radius: 100px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 18px;
+            border-radius: 100px;
+            margin-bottom: 30px;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero-badge i {
+            color: #60a5fa;
+        }
+
+        .hero h1 {
+            font-size: 4.6rem;
+            line-height: 1.05;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 25px;
+            animation: fadeUp 1.1s ease;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            max-width: 700px;
+            animation: fadeUp 1.2s ease;
+        }
+
+        /* Glass */
+
+        .glass-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+            border-radius: 28px;
+            transition: 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.18);
+        }
+
+        /* Contact Section */
+
+        .contact-section {
+            padding: 60px 0 120px;
+        }
+
+        .contact-wrapper {
+            padding: 50px;
+        }
+
+        .contact-title {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-text {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #60a5fa;
+        }
+
+        /* Form */
+
+        .form-control {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: white;
+            border-radius: 18px;
+            padding: 16px 18px;
+            transition: 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: rgba(255,255,255,0.08);
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 0.2rem rgba(96,165,250,0.2);
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.45);
+        }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: none;
+        }
+
+        .form-label {
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.88);
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #2563eb, #8b5cf6);
+            border: none;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 16px;
+            font-weight: 600;
+            transition: 0.35s ease;
+            width: 100%;
+            box-shadow: 0 10px 35px rgba(59,130,246,0.3);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(59,130,246,0.45);
+        }
+
+        /* Footer */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 45px 0;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .socials {
+            margin-bottom: 20px;
+        }
+
+        .socials a {
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 8px;
+            background: rgba(255,255,255,0.06);
+            color: white;
+            transition: 0.35s ease;
+        }
+
+        .socials a:hover {
+            background: linear-gradient(135deg, #2563eb, #8b5cf6);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+
+        @media(max-width: 992px) {
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .contact-wrapper {
+                padding: 35px;
+            }
+
+        }
+
+        @media(max-width: 768px) {
+
+            .hero {
+                min-height: 50vh;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .contact-wrapper {
+                padding: 30px 22px;
+            }
+
+            .contact-title {
+                font-size: 2.2rem;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-blur bg-one"></div>
+    <div class="bg-blur bg-two"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="/">
+                Matthew Thompson
+            </a>
+
+            <button class="navbar-toggler text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/subjects">Subjects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/levels">Levels</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+
+                
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="row justify-content-center text-center">
+
+                <div class="col-lg-8">
+
+                    <div class="hero-badge">
+                        <i class="fas fa-envelope"></i>
+                        Contact Matthew Thompson
+                    </div>
+
+                    <h1>
+                        Let’s Start the Conversation
+                    </h1>
+
+                    <p>
+                        Whether you are looking for GCSE support,
+                        A-Level tuition or degree-level guidance,
+                        feel free to get in touch.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+
+        <div class="container">
+
+            <div class="row g-5 align-items-center">
+
+                <!-- Left -->
+                <div class="col-lg-5 reveal">
+
+                    <div class="glass-card contact-wrapper h-100">
+
+                        <h2 class="contact-title">
+                            Get In Touch
+                        </h2>
+
+                        <p class="contact-text">
+                            Send a message to discuss tuition availability,
+                            lesson formats or academic support options.
+                        </p>
+
+                        <div class="info-box">
+
+                            <div class="info-icon">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+
+                            <div>
+                                <h6 class="mb-1">Locations</h6>
+                                <p class="mb-0 text-secondary">
+                                    Southampton • Winchester • Romsey
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="info-box">
+
+                            <div class="info-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+
+                            <div>
+                                <h6 class="mb-1">Subjects</h6>
+                                <p class="mb-0 text-secondary">
+                                    English • Humanities • Psychology
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="info-box">
+
+                            <div class="info-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+
+                            <div>
+                                <h6 class="mb-1">Levels</h6>
+                                <p class="mb-0 text-secondary">
+                                    GCSE • A-Level • Degree Level
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Form -->
+                <div class="col-lg-7 reveal">
+
+                    <div class="glass-card contact-wrapper">
+
+                        <form action="/contact" method="POST">
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input type="text"
+                                    class="form-control"
+                                    placeholder="Enter your full name"
+                                    name="fullname">
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Email Address
+                                </label>
+
+                                <input type="email"
+                                    class="form-control"
+                                    placeholder="Enter your email address"
+                                    name="email">
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Message
+                                </label>
+
+                                <textarea class="form-control"
+                                    placeholder="Tell me a little about the support you are looking for..."
+                                    name="message"></textarea>
+
+                            </div>
+
+                            <button class="btn btn-main">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                Send Message
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="container">
+
+            <div class="socials">
+
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+            </div>
+
+            <p>
+                © 2026 Matthew Thompson Private Tuition
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scroll Reveal -->
+    <script>
+
+        const reveals = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            reveals.forEach((element) => {
+
+                const windowHeight = window.innerHeight;
+                const revealTop = element.getBoundingClientRect().top;
+
+                if (revealTop < windowHeight - 100) {
+
+                    element.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+
+        revealOnScroll();
+
+    </script>
+
+    <!-- Service Worker -->
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener("load", () => {
+
+                navigator.serviceWorker.register("/service-worker.js")
+                .then(reg => {
+
+                    console.log("Service Worker Registered", reg);
+
+                })
+                .catch(err => {
+
+                    console.log("Service Worker Failed", err);
+
+                });
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
