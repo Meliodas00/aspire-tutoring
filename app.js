@@ -6,7 +6,15 @@ const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const mongoose = require('mongoose');
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
 const app = express();
 
@@ -45,13 +53,6 @@ app.use(
     )
 );
 
-// link up the database
-mongoose.connect(process.env.MONGO_URI).then(()=> {
-    console.log("MongoDB Connected!");
-})
-.catch((err)=> {
-    console.log(err)
-});
 
 // generate with node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
@@ -111,9 +112,9 @@ app.get("/about", (req, res) => {
 app.get("/contact", (req, res) => {
 
     res.render("contact", {
-        title: "Contact"
+        title: "Contact",
+        success: req.query.success || null
     });
-
 });
 
 

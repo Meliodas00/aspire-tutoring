@@ -548,6 +548,13 @@
 
                     <div class="glass-card contact-wrapper">
 
+                        <% if (success) { %>
+                            <div class="alert alert-success mb-4">
+                                Your message has been sent successfully.
+                            </div>
+                        <% } %>
+
+
                         <form action="/contact" method="POST">
 
                             <div class="mb-4">
@@ -627,7 +634,7 @@
             </div>
 
             <p>
-                © 2026 Matthew Thompson Private Tuition
+                © 2026 Matthew Thompson Zenith Tuition
             </p>
 
         </div>
