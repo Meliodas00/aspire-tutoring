@@ -4,15 +4,11 @@ const router = express.Router();
 
 const contactFormEmail = require('../emails/contactFormEmail');
 
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+const resend = new Resend(
+    process.env.RESEND_API_KEY
+);
 
 
 router.get("/contact", (req, res) => {
@@ -24,7 +20,7 @@ router.get("/contact", (req, res) => {
 
 });
 
-// simple feedback - using a message schema save the query as a db entry DEPRACATED
+// simple feedback - using a message schema save the query as a db entry DEPRECATED
 
 router.post("/contact", async (req, res) => {
 
@@ -36,11 +32,15 @@ router.post("/contact", async (req, res) => {
             return res.status(400).send("All fields are required.");
         }
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+        await resend.emails.send({
+            from: "bot@zenithtuition.com",
             to: process.env.CONTACT_RECEIVER,
             subject: `New Contact Form Submission from ${fullname}`,
-            html: contactFormEmail({ fullname, email, message })
+            html: contactFormEmail({
+                fullname,
+                email,
+                message
+            })
         });
 
         res.redirect("/contact?success=true");

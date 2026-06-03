@@ -759,19 +759,45 @@
             background: linear-gradient(135deg, #2563eb, #7c3aed);
         }
 
-        /* Testimonials */
 
-        .testimonial {
-            position: relative;
+        /* Table */
+
+        #pricing .table {
+            --bs-table-bg: transparent;
+            --bs-table-striped-bg: transparent;
+            --bs-table-hover-bg: rgba(255,255,255,0.04);
+            --bs-table-border-color: rgba(255,255,255,0.08);
+            color: white;
         }
 
-        .testimonial::before {
-            content: "“";
-            position: absolute;
-            top: -20px;
-            left: 0;
-            font-size: 5rem;
-            opacity: 0.15;
+        #pricing .table th,
+        #pricing .table td {
+            color: #fff !important;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            color: white;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1rem;
+            background: transparent;
+        }
+
+        .pricing-table th {
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .pricing-table td {
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
         }
 
         /* Contact */
@@ -880,6 +906,13 @@
             }
         }
 
+        .review-stars {
+            color: #fbbf24;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
     </style>
 </head>
 
@@ -915,7 +948,7 @@
         <div class="container">
 
             <a class="navbar-brand" href="#">
-                Matthew Thompson • Zenith Tutoring
+                Matthew Thompson • Zenith Tuition
             </a>
 
             <button class="navbar-toggler text-white"
@@ -947,6 +980,10 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="#edhome">Home Ed</a>
                     </li>
 
@@ -974,7 +1011,7 @@
 
                     <div class="hero-badge">
                         <i class="fas fa-location-dot"></i>
-                        Zenith Tutoring • Hampshire
+                        Zenith Tuition • Hampshire (In-person) • Online
                     </div>
 
                     <h1>
@@ -1088,6 +1125,10 @@
 
             <div class="section-title reveal" style="margin-top: 90px;">
 
+                <h4>
+                    SEN Tutoring
+                </h4>
+
                 <p>
                     I have taught many students with a variety of <b>educational needs</b>, ranging from dyslexia, dyspraxia, dysgraphia, ADD, ADHD, slow processing issues to various learning challenges and have found 
                     a way to always engage them in the sessions and keep them interested in the subject and help them achieve their goals. 
@@ -1115,7 +1156,8 @@
                 </h2>
 
                 <p>
-                    Specialist tuition across humanities and academic writing disciplines.
+                    Specialist tuition across humanities and academic writing disciplines. If you require Maths, Sciences or any other subjects, 
+                    please get in contact as I have many tutors whom I manage through my homeschool staff that I can forward your enquiry to.
                 </p>
 
             </div>
@@ -1139,6 +1181,122 @@
 
     </section>
 
+
+    <section id="pricing">
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <h2>
+                Pricing
+            </h2>
+
+            <p>
+                Flexible tuition options available for individuals and groups. Online lessons are discounted by 10% from the prices listed below.
+            </p>
+
+        </div>
+
+        <!-- Group Lessons -->
+
+        <div class="glass-card reveal mb-5">
+
+            <h4 class="mb-3">
+                Group Lessons
+            </h4>
+
+            <p class="mb-2">
+                Group lessons are available for <b>English, History, 11+, 13+ and school admission entrance examinations.</b>
+            </p>
+
+            <p class="mb-0">
+                <b>£8 per student</b> &mdash; minimum of <b>5 students</b> required.
+            </p>
+
+        </div>
+
+        <!-- One-to-One Pricing -->
+
+        <div class="glass-card reveal">
+
+            <h4 class="mb-4">
+                One-to-One Tuition
+            </h4>
+
+            <p>
+                Available <b>in-person and online</b>. Online lessons are <b>10% cheaper</b> than the prices shown below.
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle mb-0">
+
+                    <thead>
+
+                        <tr>
+                            <th>Level / Age</th>
+                            <th>Price</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Key Stage 2 (Years 4-6, including SATs)</td>
+                            <td>£38</td>
+                        </tr>
+
+                        <tr>
+                            <td>Key Stage 3 (Years 7-9)</td>
+                            <td>£42</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Entrance Exams (11+, 13+, TSA, SAT)
+                            </td>
+                            <td>£42-£48</td>
+                        </tr>
+
+                        <tr>
+                            <td>GCSE (Years 10-11)</td>
+                            <td>£45</td>
+                        </tr>
+
+                        <tr>
+                            <td>A Level (Years 12-13)</td>
+                            <td>£48</td>
+                        </tr>
+
+                        <tr>
+                            <td>Adult Learner</td>
+                            <td>£45</td>
+                        </tr>
+
+                        <tr>
+                            <td>ESL (English as a Second Language)</td>
+                            <td>£42</td>
+                        </tr>
+
+                        <tr>
+                            <td>Functional Skills</td>
+                            <td>£42</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
     <!-- Levels -->
     <section id="levels">
 
@@ -1157,6 +1315,39 @@
             </div>
 
             <div class="row g-4">
+
+                <div class="col-md-6 col-lg-3 reveal">
+
+                    <div class="glass-card text-center">
+
+                        <i class="fas fa-school"></i>
+
+                        <h4>Primary education & SATS</h4>
+
+                        <p>
+                            Key Stage 1&2 Support.
+                        </p>
+
+                    </div>
+
+                </div>
+                
+                <div class="col-md-6 col-lg-3 reveal">
+
+                    <div class="glass-card text-center">
+
+                        <i class="fas fa-school"></i>
+
+                        <h4>Secondary education</h4>
+
+                        <p>
+                            Key Stage 3 Support.
+                        </p>
+
+                    </div>
+
+                </div>
+
 
                 <div class="col-md-6 col-lg-3 reveal">
 
@@ -1302,9 +1493,6 @@
 
         </div>
 
-
-
-
     </section>
 
 
@@ -1319,6 +1507,10 @@
                     Feedback
                 </h2>
 
+                <p>
+                    I have hundreds of 5 star reviews across various platforms and can provide countless references from previous clients', but here are a few of the reviews I've received. 
+                </p>
+
             </div>
 
             <div class="row g-4">
@@ -1328,8 +1520,82 @@
                     <div class="glass-card testimonial">
 
                         <h5 class="mb-3">
+                            “I can highly recommend him.”
+                        </h5>
+
+                        <div class="review-stars">★★★★★</div>
+
+                        <p>
+                            Matt has been absolutely brilliant for my 17 year old son studying A level English language. 
+                            He has a very structured approach, which gave us confidence and is what my son needed, but he brings fun along with it. 
+                            My son's writing skills have improved but also his confidence as been raised by Matt and I would say he has been a mentor as well as a teacher. 
+                        </p>
+
+                        <small class="text-white">
+                            — Mark
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 reveal">
+
+                    <div class="glass-card testimonial">
+
+                        <h5 class="mb-3">
+                            “If you have a reluctant learner Matt comes highly recommended.”
+                        </h5>
+
+                        <div class="review-stars">★★★★★</div>
+
+                        <p>
+                            It`s been such a relief to find a tutor that motivates and focuses our son's learning. 
+                            The lessons are engaging and his confidence is growing. 
+                            We have no doubt that this is not only contributing to his English grades improving but also the comprehension in his other subjects are benefiting.
+                        </p>
+
+                        <small class="text-white">
+                            — Tanya
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6 reveal">
+
+                    <div class="glass-card testimonial">
+
+                        <h5 class="mb-3">
+                            “Matt has been brilliant”
+                        </h5>
+
+                        <div class="review-stars">★★★★★</div>
+
+                        <p>
+                            My daughter's enthusiasm for English has risen from Zero to 100% in a matter of weeks.
+                        </p>
+
+                        <small class="text-white">
+                            — Andrea
+                        </small>
+
+                    </div>
+
+                </div>
+                
+
+                <div class="col-lg-6 reveal">
+
+                    <div class="glass-card testimonial">
+
+                        <h5 class="mb-3">
                             “I highly recommend Matt as a tutor and a lovely person.”
                         </h5>
+
+                        <div class="review-stars">★★★★★</div>
 
                         <p>
                             Matt was an amazing teacher; he taught my son English Language and Literature. 
@@ -1353,6 +1619,8 @@
                             “Matt takes his role of a tutor very seriously!”
                         </h5>
 
+                        <div class="review-stars">★★★★★</div>
+
                         <p>
                              He is a very thorough person, this became apparent to me from our extensive communication prior to the start of any tutoring in order to identify the short term goals and long term objectives. 
                              We even had an introductory call before tutoring, an arrangement I never experienced with any Tutorhunt tutors
@@ -1373,6 +1641,8 @@
                         <h5 class="mb-3">
                             “I would definitely recommend Matt and his online sessions.”
                         </h5>
+
+                        <div class="review-stars">★★★★★</div>
 
                         <p>
                              Matt has been tutoring my two sons (Year 8) in English for a few months now. 
@@ -1420,6 +1690,8 @@
                             “I cannot recommend Matt highly enough.”
                         </h5>
 
+                        <div class="review-stars">★★★★★</div>
+
                         <p>
                             Matt has been tutoring my 3 children (14,9,7) for the past year. 
                             The lessons he delivers are tailor made for their ability and needs and demonstrates a sound understanding of the curriculum that they are following. 
@@ -1454,7 +1726,7 @@
                 </h2>
 
                 <p>
-                    Enquire about availability, tuition options and home education.
+                    Enquire about availability, tuition options and/or home education.
                 </p>
 
                 <div class="hero-buttons justify-content-center">
