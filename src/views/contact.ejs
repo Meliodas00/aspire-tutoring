@@ -534,12 +534,29 @@
 
                     <div class="glass-card contact-wrapper">
 
-                        <% if (success) { %>
+                        <% if (success === "true") { %>
                             <div class="alert alert-success mb-4">
                                 Your message has been sent successfully.
                             </div>
                         <% } %>
 
+                        <% if (success === "invalid") { %>
+                            <div class="alert bg-danger text-white mb-4">
+                                Please fill out all the fields.
+                            </div>
+                        <% } %>
+
+                        <% if (success === "false") { %>
+                            <div class="alert bg-danger text-white mb-4">
+                                There was an error sending your message.
+                            </div>
+                        <% } %>
+
+                        <% if (success === "ratelimited") { %>
+                            <div class="alert alert-danger text-black mb-4">
+                                You've reached the message limit, please try again later!
+                            </div>
+                        <% } %>
 
                         <form action="/contact" method="POST">
 
@@ -552,7 +569,8 @@
                                 <input type="text"
                                     class="form-control"
                                     placeholder="Enter your full name"
-                                    name="fullname">
+                                    name="fullname"
+                                    maxlength="100">
 
                             </div>
 
@@ -565,7 +583,8 @@
                                 <input type="email"
                                     class="form-control"
                                     placeholder="Enter your email address"
-                                    name="email">
+                                    name="email"
+                                    maxlength="254">
 
                             </div>
 
@@ -577,7 +596,8 @@
 
                                 <textarea class="form-control"
                                     placeholder="Tell me a little about the support you are looking for..."
-                                    name="message"></textarea>
+                                    name="message"
+                                    maxlength="600"></textarea>
 
                             </div>
 
