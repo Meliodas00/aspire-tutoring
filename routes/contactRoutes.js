@@ -29,7 +29,7 @@ router.post("/contact", contactLimiter, async (req, res) => {
 
     if (req.body.hp_field) {
         console.log(`Honeypot triggered by ${req.ip}`);
-        return res.redirect("/contact?success=invalid"); 
+        return res.redirect("/contact?success=true"); 
     }
 
     const turnstileToken = req.body["cf-turnstile-response"];

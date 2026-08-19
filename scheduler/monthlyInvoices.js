@@ -1,14 +1,3 @@
-// server/scheduler/monthlyInvoices.js
-//
-// Runs every hour. On the 1st of the month, at TARGET_HOUR, it renders every
-// invoice to PDF and emails them all as attachments to the business inbox,
-// using Resend.
-//
-// Why "every hour, but gated to one hour" instead of just firing on date===1:
-// a plain "if today is the 1st, send" check run every hour would fire 24
-// times that day. Gating to a single hour makes it effectively once-a-day,
-// while still satisfying "check every hour".
-
 const cron = require('node-cron');
 const { Resend } = require('resend');
 const puppeteer = require('puppeteer');
@@ -16,18 +5,13 @@ const puppeteer = require('puppeteer');
 const invoiceDocument = require('../emails/invoiceDocument');
 const { business, invoices } = require('../data/invoiceData');
 
-const TARGET_HOUR = 9; // 24hr clock — change to whatever hour you want it sent
+const TARGET_HOUR = 9; // 24hr 
 const RECIPIENT = process.env.INVOICE_RECIPIENT || business.email; // where all invoices get sent
 
-// ---------------------------------------------------------------------------
-// Resend client — reads the API key from the environment.
-// Never hardcode the real key in this file.
-// ---------------------------------------------------------------------------
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// ---------------------------------------------------------------------------
-// Render one invoice record to a PDF buffer using the existing HTML template.
-// ---------------------------------------------------------------------------
+
 async function renderInvoicePdf(browser, invoiceRecord) {
   const html = invoiceDocument({
     business,
@@ -43,9 +27,6 @@ async function renderInvoicePdf(browser, invoiceRecord) {
   return pdfBuffer;
 }
 
-// ---------------------------------------------------------------------------
-// Generate every invoice as a PDF, then send them all as attachments to you.
-// ---------------------------------------------------------------------------
 async function sendAllInvoices() {
   const invoiceNumbers = Object.keys(invoices);
 
@@ -68,14 +49,10 @@ async function sendAllInvoices() {
         const pdfBuffer = await renderInvoicePdf(browser, record);
         attachments.push({
           filename: `${invoiceNumber}.pdf`,
-          // Resend expects attachment content as base64 (or a Buffer, which
-          // it base64-encodes internally depending on SDK version) — base64
-          // string is the safest bet across versions.
           content: pdfBuffer.toString('base64')
         });
       } catch (err) {
         console.error(`[monthlyInvoices] Failed to render ${invoiceNumber}:`, err);
-        // Continue rendering the rest rather than aborting the whole run.
       }
     }
 
@@ -103,9 +80,6 @@ async function sendAllInvoices() {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Cron: runs at the top of every hour, only acts on the 1st at TARGET_HOUR.
-// ---------------------------------------------------------------------------
 function startMonthlyInvoiceScheduler() {
   cron.schedule('0 * * * *', async () => {
     const now = new Date();
