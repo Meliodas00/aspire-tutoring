@@ -26,6 +26,12 @@ router.get("/contact", (req, res) => {
 });
 
 router.post("/contact", contactLimiter, async (req, res) => {
+
+    if (req.body.website) {
+        console.log('Honeypot triggered by ${req.ip}');
+        return res.redirect("/contact?success=true"); // pretend success, send nothing
+    }
+
     try {
         const { fullname, email, message } = req.body;
 

@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+
+//const { startMonthlyInvoiceScheduler } = require('./scheduler/monthlyInvoices');
+
 const app = require("./app");
 
 const http = require("http");
@@ -19,6 +22,8 @@ const io =
 
 const PORT =
     process.env.PORT || 3000;
+
+//startMonthlyInvoiceScheduler();
 
 server.listen(
     PORT,
