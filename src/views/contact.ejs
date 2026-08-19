@@ -4,6 +4,7 @@
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4FMXQ0BLL"></script>
+    
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -11,6 +12,8 @@
 
     gtag('config', 'G-S4FMXQ0BLL');
     </script>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -570,8 +573,8 @@
 
                         <form action="/contact" method="POST">
                             <div style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true">
-                                <label for="website">Leave this field blank</label>
-                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                                <label for="hp_field">LTFB</label>
+                            <input type="text" id="hp_field" name="hp_field" tabindex="-1" autocomplete="off">
                             </div>
                             
                             <div class="mb-4">
@@ -619,6 +622,9 @@
                                 <i class="fas fa-paper-plane me-2"></i>
                                 Send Message
                             </button>
+
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEVa0Nv-Gs0kahP4"></div>
+
 
                         </form>
 

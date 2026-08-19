@@ -27,9 +27,31 @@ router.get("/contact", (req, res) => {
 
 router.post("/contact", contactLimiter, async (req, res) => {
 
-    if (req.body.website) {
-        console.log('Honeypot triggered by ${req.ip}');
-        return res.redirect("/contact?success=true"); // pretend success, send nothing
+    if (req.body.hp_field) {
+        console.log(`Honeypot triggered by ${req.ip}`);
+        return res.redirect("/contact?success=invalid"); 
+    }
+
+    const turnstileToken = req.body["cf-turnstile-response"];
+    if (!turnstileToken) {
+        return res.redirect("/contact?success=invalid");
+    }
+
+    const verifyResponse = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+            secret: process.env.TURNSTILE_SECRET_KEY,
+            response: turnstileToken,
+            remoteip: req.ip
+        })
+    });
+
+    const verifyResult = await verifyResponse.json();
+
+    if (!verifyResult.success) {
+        console.log(`Turnstile failed for ${req.ip}`);
+        return res.redirect("/contact?success=invalid");
     }
 
     try {
