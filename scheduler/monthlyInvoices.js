@@ -21,10 +21,10 @@ async function renderInvoicePdf(browser, invoiceRecord) {
 
   const page = await browser.newPage();
   await page.setContent(html, { waitUntil: 'networkidle0' });
-  const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
+  const pdfData = await page.pdf({ format: 'A4', printBackground: true });
   await page.close();
 
-  return pdfBuffer;
+  return Buffer.from(pdfData);
 }
 
 async function sendAllInvoices() {
@@ -47,10 +47,13 @@ async function sendAllInvoices() {
 
       try {
         const pdfBuffer = await renderInvoicePdf(browser, record);
+        const base64Content = pdfBuffer.toString('base64');
+
         attachments.push({
-          filename: `${invoiceNumber}.pdf`,
-          content: pdfBuffer.toString('base64')
+            filename: `${invoiceNumber}.pdf`,
+            content: base64Content
         });
+
       } catch (err) {
         console.error(`[monthlyInvoices] Failed to render ${invoiceNumber}:`, err);
       }
@@ -62,7 +65,7 @@ async function sendAllInvoices() {
     }
 
     const { data, error } = await resend.emails.send({
-      from: business.email,
+      from: process.env.EMAIL_USER,
       to: RECIPIENT,
       subject: `Monthly Invoices — ${new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })}`,
       text: `Attached are ${attachments.length} invoice(s) for this month.`,

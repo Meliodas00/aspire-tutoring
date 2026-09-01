@@ -65,6 +65,7 @@ router.post("/contact", contactLimiter, async (req, res) => {
             email.length > 254 ||
             message.length > 600
         ) {
+            console.log(`Data incorrect length for ${req.ip}`);
             return res.redirect("/contact?success=invalid");
         }
 
@@ -72,6 +73,7 @@ router.post("/contact", contactLimiter, async (req, res) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailRegex.test(email)) {
+            console.log(`Invalid email syntax ${req.ip}`);
             return res.redirect("/contact?success=invalid");
         }
 

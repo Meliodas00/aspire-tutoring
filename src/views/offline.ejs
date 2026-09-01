@@ -1,31 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline — Zenith Tuition</title>
 
-    <meta charset="UTF-8">
-    <title>Offline</title>
+<style>
+  :root {
+    --ink: #1B2430;
+    --ink-soft: #2C3A4C;
+    --cream: #F6F1E7;
+    --brass: #C79A4B;
+    --brass-bright: #E3B968;
+  }
 
-    <link href="/css/styles.css" rel="stylesheet">
+  * { box-sizing: border-box; }
 
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    background: radial-gradient(circle at 50% 20%, var(--ink-soft), var(--ink) 70%);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .card {
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .keys {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-bottom: 36px;
+  }
+
+  .keys span {
+    width: 8px;
+    height: 34px;
+    background: var(--cream);
+    opacity: 0.15;
+    border-radius: 0 0 2px 2px;
+    animation: press 2.6s ease-in-out infinite;
+  }
+
+  .keys span:nth-child(1) { animation-delay: 0s; }
+  .keys span:nth-child(2) { animation-delay: 0.15s; }
+  .keys span:nth-child(3) { animation-delay: 0.3s; }
+  .keys span:nth-child(4) { animation-delay: 0.45s; }
+  .keys span:nth-child(5) { animation-delay: 0.6s; }
+  .keys span:nth-child(6) { animation-delay: 0.75s; }
+  .keys span:nth-child(7) { animation-delay: 0.9s; }
+
+  @keyframes press {
+    0%, 100% { opacity: 0.15; transform: translateY(0); }
+    50% { opacity: 0.6; transform: translateY(3px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .keys span { animation: none; opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: "Didot", "Bodoni MT", "Playfair Display", serif;
+    font-weight: 500;
+    font-size: clamp(28px, 5vw, 38px);
+    letter-spacing: 0.01em;
+    margin: 0 0 18px;
+    color: var(--brass-bright);
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: 0.85;
+    margin: 0 auto 34px;
+    max-width: 34ch;
+  }
+
+  .retry {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--brass);
+    text-decoration: none;
+    padding: 13px 34px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .retry:hover,
+  .retry:focus-visible {
+    background: var(--brass-bright);
+    transform: translateY(-1px);
+  }
+
+  .retry:focus-visible {
+    outline: 2px solid var(--cream);
+    outline-offset: 3px;
+  }
+
+  .brand {
+    margin-top: 46px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    opacity: 0.35;
+  }
+</style>
 </head>
 
 <body>
 
-    <div class="container text-center mt-5">
+  <div class="card">
 
-        <h1>You Are Offline</h1>
-
-        <p>
-            Zenith Tuition cannot connect to the internet right now.
-        </p>
-
-        <a href="/" class="btn btn-primary">
-            Retry
-        </a>
-
+    <div class="keys" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
 
-</body>
+    <h1>The connection's gone quiet</h1>
 
+    <p>
+      Zenith Tuition can't reach the internet right now. Check your connection and try again.
+    </p>
+
+    <a href="/" class="retry">Try again</a>
+
+    <div class="brand">ZENITH TUITION</div>
+
+  </div>
+
+</body>
 </html>
