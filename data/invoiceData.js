@@ -1,3 +1,14 @@
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min)) + Math.ceil(min));
+}
+
+function getInvoiceName(name) {
+  const number = getRandomInt(1000000, 9999999);
+  const year = new Date().getFullYear();
+  return `INV-${year}-${number}-${name}`;
+}
+
+
 const invoices = {
   "INV-2026-001": {
     parent: {
@@ -7,7 +18,7 @@ const invoices = {
       phone: "07700 900001"
     },
     invoice: {
-      invoiceNumber: "INV-2026-001",
+      invoiceNumber: getInvoiceName("Jane"),
       issueDate: "19 August 2026",
       dueDate: "2 September 2026",
       subtotal: 135,
@@ -30,7 +41,7 @@ const invoices = {
       phone: "07700 900002"
     },
     invoice: {
-      invoiceNumber: "INV-2026-002",
+      invoiceNumber: getInvoiceName(),
       issueDate: "19 August 2026",
       dueDate: "2 September 2026",
       subtotal: 90,

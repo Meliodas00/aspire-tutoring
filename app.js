@@ -84,6 +84,15 @@ app.get("/offline", (req, res) => {
 });
 
 
+app.get("/quiz", (req, res) => { 
+
+    res.render("quiz", {
+        title: "Test Your Knowledge!"
+    });
+
+
+});
+
 app.get("/", (req, res) => {
 
     res.render("index", {
@@ -93,7 +102,6 @@ app.get("/", (req, res) => {
 });
 
 
-
 app.get("/contact", (req, res) => {
 
     res.render("contact", {
@@ -101,6 +109,15 @@ app.get("/contact", (req, res) => {
         success: req.query.success || null
     });
 });
+
+app.get("/resources", (req, res) => {
+
+    res.render("resources", {
+        title: "Resources",
+        success: req.query.success || null
+    });
+});
+
 
 
 
