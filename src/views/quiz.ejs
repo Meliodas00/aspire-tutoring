@@ -465,20 +465,97 @@
             margin: -14px 0 22px;
         }
 
-        .explanation {
+        /* Feedback panel (appears under the options) */
+
+        .feedback-panel {
             display: none;
-            background: rgba(255,255,255,0.05);
-            border-left: 3px solid var(--primary);
-            border-radius: 12px;
-            padding: 16px 20px;
             margin: 6px 0 24px;
-            color: var(--muted);
-            line-height: 1.7;
+            padding: 20px 24px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
         }
 
-        .explanation.show {
+        .feedback-panel.show {
             display: block;
             animation: fadeUp 0.4s ease;
+        }
+
+        .feedback-panel.good {
+            background: rgba(52,211,153,0.08);
+            border-color: rgba(52,211,153,0.35);
+            border-left-color: var(--correct);
+        }
+
+        .feedback-panel.bad {
+            background: rgba(248,113,113,0.08);
+            border-color: rgba(248,113,113,0.35);
+            border-left-color: var(--wrong);
+        }
+
+        .fb-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .fb-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .feedback-panel.good .fb-icon {
+            background: var(--correct);
+            color: #04210f;
+        }
+
+        .feedback-panel.bad .fb-icon {
+            background: var(--wrong);
+            color: #2a0707;
+        }
+
+        .fb-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .feedback-panel.good .fb-title {
+            color: var(--correct);
+        }
+
+        .feedback-panel.bad .fb-title {
+            color: var(--wrong);
+        }
+
+        .fb-answer {
+            color: white;
+            font-weight: 500;
+            line-height: 1.6;
+            margin: 4px 0 10px;
+        }
+
+        .fb-fact {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-top: 8px;
+        }
+
+        .fb-fact-label {
+            display: block;
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
         }
 
         .quiz-actions {
@@ -790,7 +867,17 @@
 
                     <div id="optionsWrap"></div>
 
-                    <div class="explanation" id="explanation"></div>
+                    <div class="feedback-panel" id="feedbackPanel" aria-live="polite">
+                        <div class="fb-head">
+                            <span class="fb-icon" id="fbIcon"></span>
+                            <span class="fb-title" id="fbTitle"></span>
+                        </div>
+                        <p class="fb-answer" id="fbAnswer"></p>
+                        <div class="fb-fact" id="fbFact">
+                            <span class="fb-fact-label">Fact</span>
+                            <span id="fbFactText"></span>
+                        </div>
+                    </div>
 
                     <div class="quiz-actions">
                         <button class="btn-ghost" id="quitBtn" type="button">
@@ -903,7 +990,7 @@
            options      array of answer strings (any number, 2-6)
            answer       ONE correct option:   answer: 1        (0 = first option)
                         SEVERAL correct:      answer: [0, 2]   (learner must tick all of them)
-           explanation  (optional) shown after the learner answers
+           explanation  (optional) the fact shown under the options after answering
          ============================================================ -->
     <script>
 
@@ -919,61 +1006,61 @@
                         q: "In what year did World War One begin?",
                         options: ["1914", "1915", "1916", "1917"],
                         answer: 0,
-                        explanation: ""
+                        explanation: "The catalyst for the war was the assassination of Archduke Franz Ferdinand on 28th June 1914 in Sarajevo. "
                     },
                     {
                         q: "Which treaty marked the end of World War 1?",
                         options: ["The Treaty of Brest-Litovsk", "The Treaty of Versailles", "The Treaty of London", "The Locarno Pact"],
                         answer: 1,
-                        explanation: ""
+                        explanation: "The Treaty was decided by the Big 3: Great Britain, France, and U.S.A and the terms imposed on Germany were seen as excessively harsh."
                     },
                     {
                         q: "Which U.S President served into his 4th term - from 1933-1945?",
                         options: ["Woodrow Wilson", "Franklin D Roosevelt", "Herbert Hoover", "Harry Truman"],
                         answer: 1,
-                        explanation: ""
+                        explanation: "FDR served four presidential terms from March 4, 1933, until his death on April 12, 1945."
                     },
                     {
                         q: "Which agreement saw Hitler ally with Stalin before World War 2 began?",
                         options: ["The Non-Intervention Agreement", "The Nazi-Soviet Pact", "The Nuremberg Laws", "The Kellogg-Briand Pact"],
                         answer: 1,
-                        explanation: ""
+                        explanation: "In 1939, Hitler and Stalin promised not to attack each other, not to support any third power that attacked either party, and to remain neutral"
                     },
                     {
                         q: "Who was Hitler’s chief of propaganda?",
                         options: ["Heinrich Himmler", "Rudolf Hess", "Albert Speer", "Joseph Goebbels"],
                         answer: 3,
-                        explanation: ""
+                        explanation: "Appointed as the Reich Minister for Public Enlightenment and Propaganda on 13 March 1933, Goebbels was responsible for pushing the Nazi’s antsemetic messages."
                     },
                     {
                         q: "What does Blitzkrieg mean?",
                         options: ["Total War", "Lightning war", "War Communism", "People's community"],
                         answer: 1,
-                        explanation: ""
+                        explanation: "Blitzkrieg was a fast-moving offensive military strategy used by Nazi Germany in the early years of World War II to achieve quick victories"
                     },
                     {
                         q: "Why did Russia leave World War 1 in 1917?",
                         options: ["Defeat at the Battle of Tannenberg", "Stalin came to power", "A Revolution occurred", "Rasputin was executed"],
                         answer: 2,
-                        explanation: ""
+                        explanation: "In 1917, Russia had TWO revolutions - February and October. The October Revolution saw the Bolsheviks take power and consequently withdraw Russia from WW1."
                     },
                     {
                         q: "When was the Cuban Missile Crisis?",
                         options: ["1962", "1960", "1964", "1968"],
                         answer: 0,
-                        explanation: ""
+                        explanation: "On October 27, 1962, the world nearly drifted into nuclear war. A U.S. U-2 spy plane was shot down over Cuba, and a Soviet B-59 submarine under depth-charge pressure nearly fired a nuclear torpedo,"
                     },
                     {
                         q: "Who was the leader of the USSR when it fell in 1991?",
                         options: ["Joseph Stalin", "Nikita Khrushchev", "Leonid Brezhnev", "Mikhail Gorbachev"],
                         answer: 3,
-                        explanation: ""
+                        explanation: "Gorbachev presided over the end of the Soviet Union as his policies of Perestroika and Glasnost loosened Russian control over the Soviet States."
                     },
                     {
                         q: "Which TWO countries never joined the League of Nations?",
                         options: ["United States of America", "Great Britain", "Germany", "France", "Russia", "Japan", "Switzerland", "Italy"],
                         answer: [0, 4],
-                        explanation: ""
+                        explanation: "63 countries joined the League of Nations to keep peace after WW1. The U.S.A never joined due to their policy of isolationism and Russia was never allowed to join because of their communist governments. Germany - initially banned - joined the League in 1926"
                     }
                 ]
             },
@@ -988,62 +1075,142 @@
                         q: "Who was the FIRST Tudor Monarch?",
                         options: ["Henry VII", "Henry VIII", "Richard III", "Edward V"],
                         answer: 0,
-                        explanation: ""
+                        explanation: "Henry Tudor defeated Richard III at the Battle of Bosworth in 1485 - ending the War of the Roses and establishing the Tudor dynasty. "
                     },
                     {
                         q: "What is Mary 1 better known as?",
                         options: ["Mary Queen of Scots", "Bloody Mary", "The Virgin Queen", "Mary of Orange"],
                         answer: 1,
-                        explanation: ""
+                        explanation: "Mary I earned the moniker ‘Bloody Mary’ due to her persecution of Protestants in England and she tried to return England to Catholicism. "
                     },
                     {
                         q: "In which year was the Spanish Armada",
                         options: ["1568", "1578", "1588", "1598"],
                         answer: 2,
-                        explanation: ""
+                        explanation: "The Spanish Armada was the most powerful force in the world at the time. Its defeat by the English was due to a series of bad weather, poor planning, and England’s superior naval tactics."
                     },
                     {
                         q: "Which of these events is known as ‘The Great Matter’?",
                         options: ["Elizabeth I’s refusal to marry", "Mary I’s marriage to the King of Spain", "Henry VIII attempts to divorce Catherine of Aragon", "The Pope’s decision to excommunicate Elizabeth I"],
                         answer: 2,
-                        explanation: ""
+                        explanation: "Henry VIII tasked Wolsey with achieving a divorce from the Pope as Catherine was unable to give him a son. The matter eventually saw England break from the Church of Rome and establish the Church of England."
                     },
                     {
                         q: "Who is the ONLY U.K monarch to be executed?",
                         options: ["Henry VIII", "James I", "Charles I", "Edward VI"],
                         answer: 2,
-                        explanation: ""
+                        explanation: "Charles I was executed in January 1649 on charges of High Treason. Charles I refused to speak at this trial as he saw it as illegitimate. "
                     },
                     {
                         q: "Who ruled England during the English Interregnum (1649–1660)?",
                         options: ["Thomas Cromwell", "Cardinal Wolsey", "Oliver Cromwell", "The Duke of Wellington"],
                         answer: 2,
-                        explanation: ""
+                        explanation: "Oliver Cromwell became Lord Protector of England after refusing the title of King. His Puritan rule saw him ban things like Christmas celebrations and closing down pubs/taverns."
                     },
                     {
                         q: "Who did Queen Victoria marry?",
                         options: ["Prince Phillip", "Robert Dudley", "Prince Albert", "Robert Devereux"],
                         answer: 1,
-                        explanation: ""
+                        explanation: "Victoria proposed to Albert on October 15, 1839, just five days after he visited Windsor Castle."
                     },
                     {
                         q: "Which battle ended the War of the Roses?",
                         options: ["The Battle of Hastings", "The Battle of Britain", "The Battle of Stamford Bridge", "The Battle of Bosworth"],
                         answer: 3,
-                        explanation: ""
+                        explanation: "Richard III brutally died during the battle. Richard himself only became King due to the mysterious disappearance of his two nephews who were the rightful heirs."
                     },
                     {
                         q: "What is William Wilberforce best known for?",
                         options: ["being a famous explorer and navigating the globe", "advising King Henry VIII", "commanding troops during the Spanish Armada", "leading the movement to abolish the Atlantic slave trade"],
                         answer: 3,
-                        explanation: ""
+                        explanation: "After years of introducing annual bills and delivering landmark speeches, he led the successful campaign to pass the Slave Trade Act 1807, which made the slave trade illegal in the British Empire."
                     },
                     {
                         q: "Which significant event happened in 1605?",
                         options: ["The Great Fire of London", "The Great Plague", "The Gunpowder Plot", "The English Civil War"],
                         answer: 2,
-                        explanation: ""
+                        explanation: "The plot was designed to assassinate the Protestant King James I and restore a Catholic monarch to the English throne. Guy Fawkes was found in the cellar of Parliament with the gunpowder. He was later publicly hanged, drawn, and quartered."
                     }
+                ]
+            },
+            {
+                id: "english-1",
+                title: "English Literature",
+                description: "Test your knowledge with this English Literature themed quiz!",
+                icon: "fas fa-pen-nib",
+                questions: [
+                    {
+                        q: "Who wrote the dystopian novel ‘1984’?",
+                        options: ["J.B Preistley", "Arthur Miller", "George Orwell", "Sir Arthur Conan Doyle"],
+                        answer: 2,
+                        explanation: ""
+                    },
+                    {
+                        q: "In which book would you find the characters ‘Piggy, Jack, and Ralph’?",
+                        options: ["Never Let Me Go", "Lord of the Flies", "Great Expectations", "Oliver Twist"],
+                        answer: 1,
+                        explanation: ""
+                    },
+                    {
+                        q: "Which Shakespeare play focuses on the murder of King Duncan?",
+                        options: ["Othello", "Hamlet", "The Tempest", "Macbeth"],
+                        answer: 3,
+                        explanation: ""
+                    },
+                    {
+                        q: "‘It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife’ is the opening line from which book?",
+                        options: ["Jane Eyre", "Wuthering Heights", "Silas Marner", "Pride and Prejudice"],
+                        answer: 3,
+                        explanation: ""
+                    },
+                    {
+                        q: "Who wrote the novel ‘Frankenstein’?",
+                        options: ["Mary Shelley", "Bram Stoker", "J.R.R Tolkien", "Jane Austen"],
+                        answer: 0,
+                        explanation: ""
+                    },
+                    {
+                        q: "Which poet wrote the poems ‘Remains’ and ‘Manhunt’?",
+                        options: ["Carol Anne Duffy", "William Blake", "Simon Armitage", "Jane Weir"],
+                        answer: 2,
+                        explanation: ""
+                    },
+                    {
+                        q: "In ‘Animal Farm’, Napoleon and Snowball are which kind of animal?",
+                        options: ["Goats", "Sheep", "Pigs", "Horses"],
+                        answer: 2,
+                        explanation: ""
+                    },
+                    {
+                        q: "How many ghosts appear in ‘A Christmas Carol’?",
+                        options: ["One", "Two", "Three", "Four"],
+                        answer: 3,
+                        explanation: ""
+                    },
+                    {
+                        q: "In which era did Charles Dickens write all of his works?",
+                        options: ["Victorian Era", "Edwardian Ero", "Jacobean Era", "Elizabethan Era"],
+                        answer: 0,
+                        explanation: ""
+                    },
+                    {
+                        q: "Which of these poetic forms is written in iambic pentametre?",
+                        options: ["Haiku", "Ode", "Sonnet", "Free verse"],
+                        answer: 2,
+                        explanation: ""
+                    },
+                    {
+                        q: "What is a soliloquy?",
+                        options: ["Where the audience knows more than the character", "Contrasting two or more ideas", "Where a character speaks their thoughts aloud", "A repeated theme, symbol, or motif"],
+                        answer: 2,
+                        explanation: ""
+                    },
+                    {
+                        q: "What does an epistolary mean?",
+                        options: ["A Gothic work", "A ‘coming of age’ genre of fiction", "A story where the narrative voice changes", "A story told through a series of written letters"],
+                        answer: 3,
+                        explanation: ""
+                    },
                 ]
             }
 
@@ -1205,6 +1372,41 @@
 
         }
 
+        // ---------- Feedback panel (under the options) ----------
+
+        function showFeedback(question, right, correct) {
+
+            const panel = $("feedbackPanel");
+            panel.classList.remove("good", "bad");
+            panel.classList.add(right ? "good" : "bad");
+
+            $("fbIcon").innerHTML = '<i class="fas ' + (right ? "fa-check" : "fa-xmark") + '"></i>';
+            $("fbTitle").textContent = right ? "Correct!" : "Not quite";
+
+            const ans = $("fbAnswer");
+            if (right) {
+                ans.style.display = "none";
+            } else {
+                ans.style.display = "block";
+                ans.textContent = "The correct answer" + (correct.length > 1 ? "s are: " : " is: ") +
+                    describeAnswer(question, correct);
+            }
+
+            const fact = (question.explanation || "").trim();
+            $("fbFact").style.display = fact ? "block" : "none";
+            $("fbFactText").textContent = fact;
+
+            panel.classList.add("show");
+
+            // Make sure it's visible on small screens
+            if (panel.scrollIntoView) panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+        }
+
+        function closeFeedback() {
+            $("feedbackPanel").classList.remove("show");
+        }
+
         // ---------- Question helpers ----------
 
         let pending = [];   // options ticked on a multi-select question before it is checked
@@ -1257,9 +1459,7 @@
             hint.style.display = multi ? "block" : "none";
             hint.textContent = "Select all that apply";
 
-            const exp = $("explanation");
-            exp.classList.remove("show");
-            exp.textContent = question.explanation || "";
+            closeFeedback();
 
             const next = $("nextBtn");
             next.disabled = true;
@@ -1345,7 +1545,8 @@
 
             });
 
-            if (question.explanation) $("explanation").classList.add("show");
+            // Show Correct / Not quite + the fact under the options
+            showFeedback(question, isCorrect(question, choice), correct);
 
             setNextLabel();
             $("nextBtn").disabled = false;
@@ -1360,6 +1561,8 @@
         }
 
         function nextQuestion() {
+
+            closeFeedback();
 
             const total = currentQuiz.questions.length;
 
@@ -1456,6 +1659,7 @@
         });
 
         $("quitBtn").addEventListener("click", () => {
+            closeFeedback();
             // Progress is already saved after each answer, so they can resume later
             renderMenu();
             showView("menu");
