@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+
 const app = express();
 app.set("trust proxy", 1);
 
@@ -83,11 +84,13 @@ app.get("/offline", (req, res) => {
 
 });
 
+const quizzes = require('./data/quizData');
 
 app.get("/quiz", (req, res) => { 
 
     res.render("quiz", {
-        title: "Test Your Knowledge!"
+        title: "Test Your Knowledge!",
+        quizzes: quizzes
     });
 
 
