@@ -20,6 +20,10 @@
     <meta name="description"
         content="Private tutor in Southampton, Winchester and Romsey. GCSE, IGCSE, A-Level, Functional Skills and Degree Level support in English, Psychology and Humanities." />
 
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#07111f">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -33,531 +37,19 @@
         crossorigin="anonymous"></script>
 
     <style>
-        /* =========================================
-        MAIN BACKGROUND
-        ========================================= */
-
-        .animated-bg {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            z-index: -1;
-            background:
-                radial-gradient(circle at top left,
-                rgba(37,99,235,0.15),
-                transparent 35%),
-
-                radial-gradient(circle at bottom right,
-                rgba(124,58,237,0.18),
-                transparent 35%),
-
-                #07111f;
-        }
 
         /* =========================================
-        GLOWING BLOBS
+        VARIABLES + BASE
         ========================================= */
-
-        .gradient-sphere {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(300px);
-            opacity: 0.55;
-            mix-blend-mode: screen;
-
-            will-change: transform;
-
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-        }
-
-        /* BLUE BLOB */
-
-        .sphere-1 {
-            width: clamp(320px, 60vw, 900px);
-            height: clamp(320px, 60vw, 900px);
-
-            background: #2563eb;
-
-            top: clamp(-300px, -20vw, -120px);
-            left: clamp(-300px, -20vw, -120px);
-
-            animation: floatOne 24s ease-in-out infinite;
-        }
-
-        /* PURPLE BLOB */
-
-        .sphere-2 {
-            width: clamp(300px, 55vw, 850px);
-            height: clamp(300px, 55vw, 850px);
-
-            background: #7c3aed;
-
-            bottom: clamp(-320px, -18vw, -100px);
-            right: clamp(-260px, -16vw, -80px);
-
-            animation: floatTwo 28s ease-in-out infinite;
-        }
-
-        /* CYAN BLOB */
-
-        .sphere-3 {
-            width: clamp(260px, 45vw, 700px);
-            height: clamp(260px, 45vw, 700px);
-
-            background: #06b6d4;
-
-            top: 20%;
-            left: 45%;
-
-            animation: floatThree 22s ease-in-out infinite;
-        }
-        /* =========================================
-        BLOB ANIMATIONS
-        ========================================= */
-
-        @keyframes floatOne {
-
-            0% {
-                transform: translate3d(0,0,0) scale(1);
-            }
-
-            25% {
-                transform: translate3d(160px,120px,0) scale(1.12);
-            }
-
-            50% {
-                transform: translate3d(80px,260px,0) scale(1.2);
-            }
-
-            75% {
-                transform: translate3d(-140px,140px,0) scale(1.08);
-            }
-
-            100% {
-                transform: translate3d(0,0,0) scale(1);
-            }
-        }
-
-        @keyframes floatTwo {
-
-            0% {
-                transform: translate3d(0,0,0) scale(1);
-            }
-
-            25% {
-                transform: translate3d(-180px,-120px,0) scale(1.1);
-            }
-
-            50% {
-                transform: translate3d(-60px,-260px,0) scale(1.18);
-            }
-
-            75% {
-                transform: translate3d(140px,-100px,0) scale(1.05);
-            }
-
-            100% {
-                transform: translate3d(0,0,0) scale(1);
-            }
-        }
-
-        @keyframes floatThree {
-
-            0% {
-                transform: translate3d(0,0,0) scale(1);
-            }
-
-            25% {
-                transform: translate3d(-180px,120px,0) scale(1.08);
-            }
-
-            50% {
-                transform: translate3d(120px,-180px,0) scale(1.15);
-            }
-
-            75% {
-                transform: translate3d(200px,80px,0) scale(1.06);
-            }
-
-            100% {
-                transform: translate3d(0,0,0) scale(1);
-            }
-        }
-
-        /* =========================================
-        PARTICLES
-        ========================================= */
-
-        .particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .particles span {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(2px);
-
-            opacity: 0.7;
-
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-
-            will-change: transform;
-        }
-
-        /* BLUE */
-
-        .particles span:nth-child(1) {
-            width: 14px;
-            height: 14px;
-            background: rgba(37,99,235,0.9);
-
-            left: 8%;
-            top: 80%;
-
-            box-shadow: 0 0 20px rgba(37,99,235,0.8);
-
-            animation: particleOne 22s infinite;
-        }
-
-        .particles span:nth-child(2) {
-            width: 10px;
-            height: 10px;
-            background: rgba(59,130,246,0.8);
-
-            left: 20%;
-            top: 10%;
-
-            box-shadow: 0 0 16px rgba(59,130,246,0.8);
-
-            animation: particleTwo 18s infinite;
-        }
-
-        /* PURPLE */
-
-        .particles span:nth-child(3) {
-            width: 16px;
-            height: 16px;
-            background: rgba(124,58,237,0.9);
-
-            left: 75%;
-            top: 70%;
-
-            box-shadow: 0 0 22px rgba(124,58,237,0.9);
-
-            animation: particleThree 26s infinite;
-        }
-
-        .particles span:nth-child(4) {
-            width: 12px;
-            height: 12px;
-            background: rgba(168,85,247,0.8);
-
-            left: 90%;
-            top: 20%;
-
-            box-shadow: 0 0 18px rgba(168,85,247,0.8);
-
-            animation: particleFour 20s infinite;
-        }
-
-        /* CYAN */
-
-        .particles span:nth-child(5) {
-            width: 18px;
-            height: 18px;
-            background: rgba(6,182,212,0.9);
-
-            left: 45%;
-            top: 85%;
-
-            box-shadow: 0 0 24px rgba(6,182,212,0.8);
-
-            animation: particleFive 24s infinite;
-        }
-
-        .particles span:nth-child(6) {
-            width: 11px;
-            height: 11px;
-            background: rgba(34,211,238,0.85);
-
-            left: 55%;
-            top: 15%;
-
-            box-shadow: 0 0 18px rgba(34,211,238,0.8);
-
-            animation: particleSix 17s infinite;
-        }
-
-        /* WHITE LIGHTS */
-
-        .particles span:nth-child(7) {
-            width: 8px;
-            height: 8px;
-            background: rgba(255,255,255,0.7);
-
-            left: 35%;
-            top: 50%;
-
-            box-shadow: 0 0 14px rgba(255,255,255,0.8);
-
-            animation: particleSeven 28s infinite;
-        }
-
-        .particles span:nth-child(8) {
-            width: 7px;
-            height: 7px;
-            background: rgba(255,255,255,0.6);
-
-            left: 82%;
-            top: 40%;
-
-            box-shadow: 0 0 12px rgba(255,255,255,0.7);
-
-            animation: particleEight 30s infinite;
-        }
-
-        /* =========================================
-        PARTICLE ANIMATIONS
-        ========================================= */
-
-        @keyframes particleOne {
-
-            0% {
-                transform: translate(0,0) scale(1);
-            }
-
-            25% {
-                transform: translate(140px,-220px) scale(1.3);
-            }
-
-            50% {
-                transform: translate(320px,-80px) scale(0.8);
-            }
-
-            75% {
-                transform: translate(180px,160px) scale(1.2);
-            }
-
-            100% {
-                transform: translate(0,0) scale(1);
-            }
-        }
-
-        @keyframes particleTwo {
-
-            0% {
-                transform: translate(0,0);
-            }
-
-            25% {
-                transform: translate(-100px,180px);
-            }
-
-            50% {
-                transform: translate(120px,320px);
-            }
-
-            75% {
-                transform: translate(220px,120px);
-            }
-
-            100% {
-                transform: translate(0,0);
-            }
-        }
-
-        @keyframes particleThree {
-
-            0% {
-                transform: translate(0,0) scale(1);
-            }
-
-            20% {
-                transform: translate(-180px,-120px) scale(1.2);
-            }
-
-            40% {
-                transform: translate(-320px,80px) scale(0.9);
-            }
-
-            60% {
-                transform: translate(-120px,260px) scale(1.3);
-            }
-
-            80% {
-                transform: translate(80px,120px) scale(1);
-            }
-
-            100% {
-                transform: translate(0,0) scale(1);
-            }
-        }
-
-        @keyframes particleFour {
-
-            0% {
-                transform: translate(0,0);
-            }
-
-            25% {
-                transform: translate(-240px,120px);
-            }
-
-            50% {
-                transform: translate(-140px,340px);
-            }
-
-            75% {
-                transform: translate(80px,160px);
-            }
-
-            100% {
-                transform: translate(0,0);
-            }
-        }
-
-        @keyframes particleFive {
-
-            0% {
-                transform: translate(0,0) scale(1);
-            }
-
-            25% {
-                transform: translate(220px,-140px) scale(1.25);
-            }
-
-            50% {
-                transform: translate(-80px,-320px) scale(0.8);
-            }
-
-            75% {
-                transform: translate(-240px,-120px) scale(1.1);
-            }
-
-            100% {
-                transform: translate(0,0) scale(1);
-            }
-        }
-
-        @keyframes particleSix {
-
-            0% {
-                transform: translate(0,0);
-            }
-
-            25% {
-                transform: translate(180px,80px);
-            }
-
-            50% {
-                transform: translate(260px,260px);
-            }
-
-            75% {
-                transform: translate(-120px,180px);
-            }
-
-            100% {
-                transform: translate(0,0);
-            }
-        }
-
-        @keyframes particleSeven {
-
-            0% {
-                transform: translate(0,0);
-                opacity: 0.4;
-            }
-
-            50% {
-                transform: translate(300px,-180px);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate(0,0);
-                opacity: 0.4;
-            }
-        }
-
-        @keyframes particleEight {
-
-            0% {
-                transform: translate(0,0);
-                opacity: 0.5;
-            }
-
-            50% {
-                transform: translate(-280px,220px);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate(0,0);
-                opacity: 0.5;
-            }
-        }
-
-
-        /* GLASS EFFECT */
-
-        .glass-card {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(16px);
-            border-radius: 28px;
-        }
-
-        /* REVEAL ANIMATIONS */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 1s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Optional Glass Effect For Sections */
-
-        .glass-card {
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 28px;
-        }
-
-        /* Smooth Fade In */
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeUp 1s ease forwards;
-        }
-
-        @keyframes fadeUp {
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        }
 
         :root {
             --bg: #07111f;
             --card: rgba(255,255,255,0.06);
             --text: #f5f7fb;
             --muted: #b8c2d0;
-            --primary: #6ea8fe;
+            --primary: #60a5fa;
             --secondary: #8b5cf6;
+            --accent: #7dd3fc;
             --border: rgba(255,255,255,0.1);
         }
 
@@ -569,11 +61,12 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 90px;   /* stops the fixed navbar covering headings */
         }
 
         body {
             font-family: 'Outfit', sans-serif;
-            background: #07111f;
+            background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
             position: relative;
@@ -583,36 +76,249 @@
             text-decoration: none;
         }
 
+        ::selection {
+            background: rgba(96,165,250,0.35);
+        }
 
-        /* Navbar */
+        /* =========================================
+        ANIMATED BACKGROUND
+        ========================================= */
+
+        .animated-bg {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -1;
+            background:
+                radial-gradient(circle at top left, rgba(37,99,235,0.15), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(124,58,237,0.18), transparent 35%),
+                #07111f;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 64px 64px;
+            -webkit-mask-image: radial-gradient(ellipse at center, #000 15%, transparent 75%);
+            mask-image: radial-gradient(ellipse at center, #000 15%, transparent 75%);
+        }
+
+        .gradient-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);        /* was 300px: much lighter on phones, same look */
+            opacity: 0.5;
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+
+        .sphere-1 {
+            width: clamp(320px, 60vw, 900px);
+            height: clamp(320px, 60vw, 900px);
+            background: #2563eb;
+            top: clamp(-300px, -20vw, -120px);
+            left: clamp(-300px, -20vw, -120px);
+            animation: floatOne 24s ease-in-out infinite;
+        }
+
+        .sphere-2 {
+            width: clamp(300px, 55vw, 850px);
+            height: clamp(300px, 55vw, 850px);
+            background: #7c3aed;
+            bottom: clamp(-320px, -18vw, -100px);
+            right: clamp(-260px, -16vw, -80px);
+            animation: floatTwo 28s ease-in-out infinite;
+        }
+
+        .sphere-3 {
+            width: clamp(260px, 45vw, 700px);
+            height: clamp(260px, 45vw, 700px);
+            background: #06b6d4;
+            top: 20%;
+            left: 45%;
+            animation: floatThree 22s ease-in-out infinite;
+        }
+
+        @keyframes floatOne {
+            0%   { transform: translate3d(0,0,0) scale(1); }
+            25%  { transform: translate3d(160px,120px,0) scale(1.12); }
+            50%  { transform: translate3d(80px,260px,0) scale(1.2); }
+            75%  { transform: translate3d(-140px,140px,0) scale(1.08); }
+            100% { transform: translate3d(0,0,0) scale(1); }
+        }
+
+        @keyframes floatTwo {
+            0%   { transform: translate3d(0,0,0) scale(1); }
+            25%  { transform: translate3d(-180px,-120px,0) scale(1.1); }
+            50%  { transform: translate3d(-60px,-260px,0) scale(1.18); }
+            75%  { transform: translate3d(140px,-100px,0) scale(1.05); }
+            100% { transform: translate3d(0,0,0) scale(1); }
+        }
+
+        @keyframes floatThree {
+            0%   { transform: translate3d(0,0,0) scale(1); }
+            25%  { transform: translate3d(-180px,120px,0) scale(1.08); }
+            50%  { transform: translate3d(120px,-180px,0) scale(1.15); }
+            75%  { transform: translate3d(200px,80px,0) scale(1.06); }
+            100% { transform: translate3d(0,0,0) scale(1); }
+        }
+
+        /* Particles */
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .particles span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.7;
+            will-change: transform;
+        }
+
+        .particles span:nth-child(1) { width:14px; height:14px; background:rgba(37,99,235,0.9);  left:8%;  top:80%; box-shadow:0 0 20px rgba(37,99,235,0.8);  animation: particleOne 22s infinite; }
+        .particles span:nth-child(2) { width:10px; height:10px; background:rgba(59,130,246,0.8); left:20%; top:10%; box-shadow:0 0 16px rgba(59,130,246,0.8); animation: particleTwo 18s infinite; }
+        .particles span:nth-child(3) { width:16px; height:16px; background:rgba(124,58,237,0.9); left:75%; top:70%; box-shadow:0 0 22px rgba(124,58,237,0.9); animation: particleThree 26s infinite; }
+        .particles span:nth-child(4) { width:12px; height:12px; background:rgba(168,85,247,0.8); left:90%; top:20%; box-shadow:0 0 18px rgba(168,85,247,0.8); animation: particleFour 20s infinite; }
+        .particles span:nth-child(5) { width:18px; height:18px; background:rgba(6,182,212,0.9);  left:45%; top:85%; box-shadow:0 0 24px rgba(6,182,212,0.8);  animation: particleFive 24s infinite; }
+        .particles span:nth-child(6) { width:11px; height:11px; background:rgba(34,211,238,0.85);left:55%; top:15%; box-shadow:0 0 18px rgba(34,211,238,0.8); animation: particleSix 17s infinite; }
+        .particles span:nth-child(7) { width:8px;  height:8px;  background:rgba(255,255,255,0.7);left:35%; top:50%; box-shadow:0 0 14px rgba(255,255,255,0.8); animation: particleSeven 28s infinite; }
+        .particles span:nth-child(8) { width:7px;  height:7px;  background:rgba(255,255,255,0.6);left:82%; top:40%; box-shadow:0 0 12px rgba(255,255,255,0.7); animation: particleEight 30s infinite; }
+
+        @keyframes particleOne {
+            0%   { transform: translate(0,0) scale(1); }
+            25%  { transform: translate(140px,-220px) scale(1.3); }
+            50%  { transform: translate(320px,-80px) scale(0.8); }
+            75%  { transform: translate(180px,160px) scale(1.2); }
+            100% { transform: translate(0,0) scale(1); }
+        }
+
+        @keyframes particleTwo {
+            0%   { transform: translate(0,0); }
+            25%  { transform: translate(-100px,180px); }
+            50%  { transform: translate(120px,320px); }
+            75%  { transform: translate(220px,120px); }
+            100% { transform: translate(0,0); }
+        }
+
+        @keyframes particleThree {
+            0%   { transform: translate(0,0) scale(1); }
+            20%  { transform: translate(-180px,-120px) scale(1.2); }
+            40%  { transform: translate(-320px,80px) scale(0.9); }
+            60%  { transform: translate(-120px,260px) scale(1.3); }
+            80%  { transform: translate(80px,120px) scale(1); }
+            100% { transform: translate(0,0) scale(1); }
+        }
+
+        @keyframes particleFour {
+            0%   { transform: translate(0,0); }
+            25%  { transform: translate(-240px,120px); }
+            50%  { transform: translate(-140px,340px); }
+            75%  { transform: translate(80px,160px); }
+            100% { transform: translate(0,0); }
+        }
+
+        @keyframes particleFive {
+            0%   { transform: translate(0,0) scale(1); }
+            25%  { transform: translate(220px,-140px) scale(1.25); }
+            50%  { transform: translate(-80px,-320px) scale(0.8); }
+            75%  { transform: translate(-240px,-120px) scale(1.1); }
+            100% { transform: translate(0,0) scale(1); }
+        }
+
+        @keyframes particleSix {
+            0%   { transform: translate(0,0); }
+            25%  { transform: translate(180px,80px); }
+            50%  { transform: translate(260px,260px); }
+            75%  { transform: translate(-120px,180px); }
+            100% { transform: translate(0,0); }
+        }
+
+        @keyframes particleSeven {
+            0%   { transform: translate(0,0); opacity: 0.4; }
+            50%  { transform: translate(300px,-180px); opacity: 1; }
+            100% { transform: translate(0,0); opacity: 0.4; }
+        }
+
+        @keyframes particleEight {
+            0%   { transform: translate(0,0); opacity: 0.5; }
+            50%  { transform: translate(-280px,220px); opacity: 1; }
+            100% { transform: translate(0,0); opacity: 0.5; }
+        }
+
+        /* =========================================
+        NAVBAR
+        ========================================= */
 
         .navbar {
-            background: rgba(8, 15, 28, 0.7);
+            background: rgba(8, 15, 28, 0.55);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
             padding: 18px 0;
             transition: 0.3s ease;
         }
 
+        .navbar.scrolled {
+            background: rgba(7, 17, 31, 0.9);
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
         .navbar-brand {
-            color: white;
+            color: white !important;
             font-size: 1.4rem;
             font-weight: 700;
         }
 
+        .navbar-toggler {
+            color: white;
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(96,165,250,0.3);
+        }
+
         .nav-link {
-            color: rgba(255,255,255,0.8);
+            position: relative;
+            color: rgba(255,255,255,0.8) !important;
             margin-left: 20px;
             font-weight: 500;
             transition: 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: white;
-            transform: translateY(-2px);
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 2px;
+            width: 0;
+            height: 2px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
         }
 
-        /* Hero */
+        .nav-link:hover,
+        .nav-link.active {
+            color: white !important;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 70%;
+        }
+
+        /* =========================================
+        HERO
+        ========================================= */
 
         .hero {
             min-height: 100vh;
@@ -620,6 +326,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 120px;
+            padding-bottom: 80px;
         }
 
         .hero-badge {
@@ -634,7 +342,8 @@
             animation: fadeUp 1s ease;
         }
 
-        .hero-badge i {
+        .hero-badge i,
+        .hero-badge svg {
             color: #60a5fa;
         }
 
@@ -648,6 +357,10 @@
         }
 
         .hero h1 span {
+            background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             color: #7dd3fc;
         }
 
@@ -679,6 +392,7 @@
         }
 
         .btn-main:hover {
+            color: white;
             transform: translateY(-5px);
             box-shadow: 0 20px 50px rgba(59,130,246,0.45);
         }
@@ -693,11 +407,46 @@
         }
 
         .btn-outline-custom:hover {
+            color: white;
             background: rgba(255,255,255,0.12);
             transform: translateY(-5px);
         }
 
-        /* Glass Cards */
+        /* Hero stats strip */
+
+        .glass-card.hero-stats {
+            height: auto;
+            margin-top: 70px;
+            padding: 28px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+            animation: fadeUp 1.4s ease;
+        }
+
+        .stat-num {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            line-height: 1;
+            background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #7dd3fc;
+        }
+
+        .stat-label {
+            display: block;
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+
+        /* =========================================
+        GLASS CARDS
+        ========================================= */
 
         .glass-card {
             background: var(--card);
@@ -715,19 +464,66 @@
             box-shadow: 0 25px 60px rgba(0,0,0,0.25);
         }
 
-        .glass-card i {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Big text blocks shouldn't lift on hover */
+        .glass-card.static:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: var(--border);
         }
 
-        /* Sections */
+        .glass-card h4 {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .glass-card p {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .glass-card b {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Icon "chip" - works whether Font Awesome leaves <i> or swaps it for <svg> */
+        .glass-card > i,
+        .glass-card > svg.svg-inline--fa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            padding: 15px;
+            margin: 0 0 22px;
+            font-size: 1.5rem;
+            color: #60a5fa;
+            background: rgba(96,165,250,0.12);
+            border: 1px solid rgba(96,165,250,0.22);
+            border-radius: 18px;
+        }
+
+        .glass-card.text-center > i,
+        .glass-card.text-center > svg.svg-inline--fa {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-link {
+            display: block;
+            height: 100%;
+        }
+
+        /* =========================================
+        SECTIONS
+        ========================================= */
 
         section {
-            padding: 120px 0;
+            padding: 110px 0;
+        }
+
+        .section-alt {
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.03) 20%, rgba(255,255,255,0.03) 80%, transparent);
         }
 
         .section-title {
@@ -736,9 +532,23 @@
         }
 
         .section-title h2 {
+            position: relative;
             font-size: 3rem;
             font-family: 'Playfair Display', serif;
             margin-bottom: 20px;
+            padding-bottom: 18px;
+        }
+
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 70px;
+            height: 4px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+            transform: translateX(-50%);
         }
 
         .section-title p {
@@ -748,7 +558,34 @@
             line-height: 1.8;
         }
 
-        /* Subject Pills */
+        .section-title p b {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .profile-img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin-bottom: 40px;
+            border: 4px solid #748aaa;
+            border-radius: 50%;
+            box-shadow: 0 0 0 10px rgba(116,138,170,0.15), 0 25px 60px rgba(0,0,0,0.4);
+        }
+
+        .glass-card.sen-card {
+            height: auto;
+            max-width: 900px;
+            margin: 90px auto 0;
+            text-align: center;
+        }
+
+        .glass-card.sen-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+        }
+
+        /* Subject pills */
 
         .subject-pills {
             display: flex;
@@ -762,21 +599,23 @@
             border: 1px solid rgba(255,255,255,0.1);
             padding: 16px 24px;
             border-radius: 100px;
+            font-weight: 500;
+            cursor: default;
             transition: 0.35s ease;
         }
 
         .subject-pill:hover {
             transform: scale(1.08);
             background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-color: transparent;
         }
 
-
-        /* Table */
+        /* Pricing table */
 
         #pricing .table {
             --bs-table-bg: transparent;
             --bs-table-striped-bg: transparent;
-            --bs-table-hover-bg: rgba(255,255,255,0.04);
+            --bs-table-hover-bg: rgba(255,255,255,0.05);
             --bs-table-border-color: rgba(255,255,255,0.08);
             color: white;
         }
@@ -784,38 +623,119 @@
         #pricing .table th,
         #pricing .table td {
             color: #fff !important;
-        }
-
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-            color: white;
-        }
-
-        .pricing-table th,
-        .pricing-table td {
             padding: 1rem;
-            background: transparent;
         }
 
-        .pricing-table th {
-            text-align: left;
+        #pricing .table th {
+            color: var(--muted) !important;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             border-bottom: 1px solid rgba(255,255,255,0.15);
         }
 
-        .pricing-table td {
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+        #pricing .table th:last-child,
+        #pricing .table td:last-child {
+            text-align: right;
+            white-space: nowrap;
         }
 
-        .pricing-table tr:last-child td {
+        #pricing .table td:last-child {
+            color: var(--accent) !important;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        #pricing .table tbody tr:last-child td {
             border-bottom: none;
         }
 
-        /* Contact */
+        /* Testimonials */
 
-        .contact-box {
+        .testimonial {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial::before {
+            content: "\201C";
+            position: absolute;
+            top: 10px;
+            right: 26px;
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            line-height: 1;
+            color: rgba(96,165,250,0.14);
+            pointer-events: none;
+        }
+
+        .testimonial h5 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            padding-right: 40px;
+        }
+
+        .review-stars {
+            color: #fbbf24;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial p {
+            flex-grow: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .testimonial small {
+            display: block;
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-weight: 600;
+        }
+
+        /* Platform buttons (Superprof / Tutorperch) */
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .btn-platform {
+            display: inline-block;
+            padding: 14px 28px;
+            color: #fff;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            font-weight: 600;
+            transition: 0.35s ease;
+        }
+
+        .btn-platform:hover,
+        .btn-platform:focus-visible {
+            color: #fff;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(59,130,246,0.35);
+        }
+
+        /* Contact CTA */
+
+        .glass-card.contact-box {
+            height: auto;
             text-align: center;
             padding: 60px;
+            background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(124,58,237,0.18));
+            border-color: rgba(139,92,246,0.35);
         }
 
         .contact-box h2 {
@@ -828,6 +748,8 @@
             color: var(--muted);
             margin-bottom: 35px;
         }
+
+        /* Footer */
 
         footer {
             padding: 40px 0;
@@ -858,25 +780,49 @@
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
         }
 
-        /* Animations */
+        /* Back to top */
+
+        .to-top {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            background: linear-gradient(135deg, #2563eb, #8b5cf6);
+            box-shadow: 0 10px 30px rgba(59,130,246,0.4);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: 0.35s ease;
+            z-index: 1000;
+        }
+
+        .to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .to-top:hover {
+            transform: translateY(-4px);
+        }
+
+        /* =========================================
+        ANIMATIONS
+        ========================================= */
 
         @keyframes fadeUp {
-
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .reveal {
             opacity: 0;
             transform: translateY(60px);
-            transition: all 1s ease;
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .reveal.active {
@@ -884,9 +830,33 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
+        /* Gentle stagger for cards in the same row */
+        .row > .reveal:nth-child(2) { transition-delay: 0.1s; }
+        .row > .reveal:nth-child(3) { transition-delay: 0.2s; }
+        .row > .reveal:nth-child(4) { transition-delay: 0.3s; }
 
-        @media(max-width: 992px) {
+        @media (prefers-reduced-motion: reduce) {
+
+            html { scroll-behavior: auto; }
+
+            .gradient-sphere,
+            .particles span {
+                animation: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+        }
+
+        /* =========================================
+        RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 992px) {
 
             .hero h1 {
                 font-size: 3.5rem;
@@ -895,76 +865,80 @@
             .section-title h2 {
                 font-size: 2.3rem;
             }
+
+            /* readable mobile menu */
+            .navbar-collapse {
+                margin-top: 14px;
+                padding: 12px 18px;
+                background: rgba(7,17,31,0.95);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+            }
+
+            .nav-link {
+                margin-left: 0;
+                padding: 10px 0 !important;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
         }
 
-        @media(max-width: 768px) {
+        @media (max-width: 768px) {
+
+            section {
+                padding: 80px 0;
+            }
 
             .hero {
                 text-align: center;
-                padding-top: 100px;
+                padding-top: 110px;
             }
 
             .hero h1 {
                 font-size: 2.8rem;
             }
 
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .hero-buttons {
                 justify-content: center;
             }
 
-            .contact-box {
+            .glass-card {
+                padding: 28px;
+            }
+
+            .glass-card.hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 50px;
+            }
+
+            .glass-card.contact-box {
                 padding: 40px 25px;
             }
+
+            .contact-box h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                margin-bottom: 50px;
+            }
+
         }
-
-        .review-stars {
-            color: #fbbf24;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        /* Buttons */
-
-        .button-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            }
-
-        .btn-link {
-            display: inline-block;
-            padding: 12px 28px;
-            background: #8094a7;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-            transition: background 0.2s ease, transform 0.2s ease;
-            --bs-btn-hover-color: #ffffff;
-            }
-
-        .btn-link:hover,
-        .btn-link:focus-visible {
-            background: #495e6b;
-            transform: translateY(-1px);
-            }
-
-        .btn-link:focus-visible {
-            outline: 2px solid #495e6b;
-            outline-offset: 3px;
-            }
 
     </style>
 </head>
 
 <body>
 
-     <!-- Animated Background -->
+    <!-- Animated Background -->
     <div class="animated-bg">
 
         <div class="gradient-sphere sphere-1"></div>
@@ -989,7 +963,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
 
         <div class="container">
 
@@ -1000,7 +974,8 @@
             <button class="navbar-toggler text-white"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navMenu">
+                data-bs-target="#navMenu"
+                aria-label="Toggle navigation">
 
                 <i class="fas fa-bars"></i>
             </button>
@@ -1008,7 +983,7 @@
             <div class="collapse navbar-collapse" id="navMenu">
 
                 <ul class="navbar-nav ms-auto">
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -1022,15 +997,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#levels">Levels</a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="#pricing">Pricing</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#edhome">Home Ed</a>
+                        <a class="nav-link" href="#levels">Levels</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#edhome">Home Education</a>
                     </li>
 
                     <li class="nav-item">
@@ -1091,6 +1066,31 @@
 
             </div>
 
+            <!-- Quick stats (taken from your About section; delete this block if you don't want it) -->
+            <div class="glass-card static hero-stats">
+
+                <div>
+                    <span class="stat-num">12+</span>
+                    <span class="stat-label">Years of tuition</span>
+                </div>
+
+                <div>
+                    <span class="stat-num">7</span>
+                    <span class="stat-label">Years as an examiner</span>
+                </div>
+
+                <div>
+                    <span class="stat-num">1000+</span>
+                    <span class="stat-label">Students helped</span>
+                </div>
+
+                <div>
+                    <span class="stat-num">DBS</span>
+                    <span class="stat-label">Fully checked</span>
+                </div>
+
+            </div>
+
         </div>
 
     </section>
@@ -1102,7 +1102,7 @@
 
             <div class="section-title reveal">
 
-                 <img src="/images/profile-picture.png" alt="Profile picture" width="300" height="300" style="margin-bottom: 50px; border: 4px solid #748aaa; border-radius: 50%;">
+                <img src="/images/profile-picture.png" alt="Profile picture" width="300" height="300" class="profile-img">
 
                 <h2>
                     About me
@@ -1175,7 +1175,7 @@
 
             </div>
 
-            <div class="section-title reveal" style="margin-top: 90px;">
+            <div class="glass-card static sen-card reveal">
 
                 <h4>
                     SEN Tutoring
@@ -1197,7 +1197,7 @@
 
 
     <!-- Subjects -->
-    <section id="subjects">
+    <section id="subjects" class="section-alt">
 
         <div class="container">
 
@@ -1234,123 +1234,124 @@
     </section>
 
 
+    <!-- Pricing -->
     <section id="pricing">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="section-title reveal">
+            <div class="section-title reveal">
 
-            <h2>
-                Pricing
-            </h2>
+                <h2>
+                    Pricing
+                </h2>
 
-            <p>
-                Flexible tuition options available for individuals and groups. Online lessons are discounted by 10% from the prices listed below.
-            </p>
+                <p>
+                    Flexible tuition options available for individuals and groups. Online lessons are discounted by 10% from the prices listed below.
+                </p>
 
-        </div>
+            </div>
 
-        <!-- Group Lessons -->
+            <!-- Group Lessons -->
 
-        <div class="glass-card reveal mb-5">
+            <div class="glass-card static reveal mb-5">
 
-            <h4 class="mb-3">
-                Group Lessons
-            </h4>
+                <h4 class="mb-3">
+                    Group Lessons
+                </h4>
 
-            <p class="mb-2">
-                Group lessons are available for <b>English, History, 11+, 13+ and school admission entrance examinations.</b>
-            </p>
+                <p class="mb-2">
+                    Group lessons are available for <b>English, History, 11+, 13+ and school admission entrance examinations.</b>
+                </p>
 
-            <p class="mb-0">
-                <b>£8 per student</b> &mdash; minimum of <b>5 students</b> required.
-            </p>
+                <p class="mb-0">
+                    <b>£8 per student</b> &mdash; minimum of <b>5 students</b> required.
+                </p>
 
-        </div>
+            </div>
 
-        <!-- One-to-One Pricing -->
+            <!-- One-to-One Pricing -->
 
-        <div class="glass-card reveal">
+            <div class="glass-card static reveal">
 
-            <h4 class="mb-4">
-                One-to-One Tuition
-            </h4>
+                <h4 class="mb-4">
+                    One-to-One Tuition
+                </h4>
 
-            <p>
-                Available <b>in-person and online</b>. Online lessons are <b>10% cheaper</b> than the prices shown below.
-            </p>
+                <p>
+                    Available <b>in-person and online</b>. Online lessons are <b>10% cheaper</b> than the prices shown below.
+                </p>
 
-            <div class="table-responsive">
+                <div class="table-responsive">
 
-                <table class="table align-middle mb-0">
+                    <table class="table table-hover align-middle mb-0">
 
-                    <thead>
+                        <thead>
 
-                        <tr>
-                            <th>Level / Age</th>
-                            <th>Price</th>
-                        </tr>
+                            <tr>
+                                <th>Level / Age</th>
+                                <th>Price</th>
+                            </tr>
 
-                    </thead>
+                        </thead>
 
-                    <tbody>
+                        <tbody>
 
-                        <tr>
-                            <td>Key Stage 2 (Years 4-6, including SATs)</td>
-                            <td>£38</td>
-                        </tr>
+                            <tr>
+                                <td>Key Stage 2 (Years 4-6, including SATs)</td>
+                                <td>£38</td>
+                            </tr>
 
-                        <tr>
-                            <td>Key Stage 3 (Years 7-9)</td>
-                            <td>£42</td>
-                        </tr>
+                            <tr>
+                                <td>Key Stage 3 (Years 7-9)</td>
+                                <td>£42</td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                Entrance Exams (11+, 13+, TSA, SAT)
-                            </td>
-                            <td>£42-£48</td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    Entrance Exams (11+, 13+, TSA, SAT)
+                                </td>
+                                <td>£42-£48</td>
+                            </tr>
 
-                        <tr>
-                            <td>GCSE (Years 10-11)</td>
-                            <td>£45</td>
-                        </tr>
+                            <tr>
+                                <td>GCSE (Years 10-11)</td>
+                                <td>£45</td>
+                            </tr>
 
-                        <tr>
-                            <td>A Level (Years 12-13)</td>
-                            <td>£48</td>
-                        </tr>
+                            <tr>
+                                <td>A Level (Years 12-13)</td>
+                                <td>£48</td>
+                            </tr>
 
-                        <tr>
-                            <td>Adult Learner</td>
-                            <td>£45</td>
-                        </tr>
+                            <tr>
+                                <td>Adult Learner</td>
+                                <td>£45</td>
+                            </tr>
 
-                        <tr>
-                            <td>ESL (English as a Second Language)</td>
-                            <td>£42</td>
-                        </tr>
+                            <tr>
+                                <td>ESL (English as a Second Language)</td>
+                                <td>£42</td>
+                            </tr>
 
-                        <tr>
-                            <td>Functional Skills</td>
-                            <td>£42</td>
-                        </tr>
+                            <tr>
+                                <td>Functional Skills</td>
+                                <td>£42</td>
+                            </tr>
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
     <!-- Levels -->
-    <section id="levels">
+    <section id="levels" class="section-alt">
 
         <div class="container">
 
@@ -1370,11 +1371,11 @@
 
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
-                            <i class="fas fa-school"></i>
+                            <i class="fas fa-child"></i>
 
                             <h4>Primary education & SATS</h4>
 
@@ -1388,10 +1389,10 @@
 
                 </div>
 
-                
+
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
@@ -1412,11 +1413,11 @@
 
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
-                            <i class="fas fa-school"></i>
+                            <i class="fas fa-pencil"></i>
 
                             <h4>GCSE</h4>
 
@@ -1433,7 +1434,7 @@
 
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
@@ -1454,7 +1455,7 @@
 
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
@@ -1475,7 +1476,7 @@
 
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
@@ -1496,11 +1497,11 @@
 
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
-                            <i class="fas fa-university"></i>
+                            <i class="fas fa-language"></i>
 
                             <h4>ESL & Adult Learners</h4>
 
@@ -1517,11 +1518,11 @@
 
                 <div class="col-md-6 col-lg-3 reveal">
 
-                    <a href="/contact" class="text-decoration-none text-reset">
+                    <a href="/contact" class="card-link text-decoration-none text-reset">
 
                         <div class="glass-card text-center">
 
-                            <i class="fas fa-university"></i>
+                            <i class="fas fa-award"></i>
 
                             <h4>11+ & 13+ Entrance Exams</h4>
 
@@ -1565,7 +1566,7 @@
 
                     <div class="glass-card text-center">
 
-                        <i class="fas fa-school"></i>
+                        <i class="fas fa-house-user"></i>
 
                         <h4>Why Families Choose Home Education</h4>
 
@@ -1582,7 +1583,7 @@
 
                     <div class="glass-card text-center">
 
-                        <i class="fas fa-globe"></i>
+                        <i class="fas fa-clipboard-list"></i>
 
                         <h4>What the Service Provides</h4>
 
@@ -1599,7 +1600,7 @@
 
                     <div class="glass-card text-center">
 
-                        <i class="fas fa-book"></i>
+                        <i class="fas fa-book-open"></i>
 
                         <h4>Subjects & Educational Approach</h4>
 
@@ -1614,13 +1615,42 @@
 
             </div>
 
+            <!-- Resources (its own row, centred under the three cards) -->
+            <div class="row g-4 mt-3 justify-content-center">
+
+                <div class="col-lg-8 reveal">
+
+                    <div class="glass-card text-center">
+
+                        <i class="fas fa-folder-open"></i>
+
+                        <h4>Resources</h4>
+
+                        <p>
+                            Home education can be challenging and expensive. That’s why I have a plethora of <b>resources</b> that I can send out to help you and your child with their studies.
+                        </p>
+
+                        <p>
+                            <b>Some are FREE;</b> others are sent in bundles. Please get in contact if you’d like to enquire about receiving some resource packs for home education.
+                        </p>
+
+                        <div class="hero-buttons justify-content-center">
+                            <a href="/contact" class="btn btn-main">Contact form</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </section>
 
 
     <!-- Testimonials -->
-    <section>
+    <section id="feedback" class="section-alt">
 
         <div class="container">
 
@@ -1632,10 +1662,10 @@
                 
                 <div class="button-group">
 
-                    <a href="https://www.superprof.co.uk/professional-private-tutor-gcse-and-igcse-examiner-and-home-education-coordinator-with-over-decade-experience.html?fbclid=IwcGRvZgVleHRuA2FlbQIxMABicmlkETF6UW54WktDWVlzaFRzRHA1c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsefQkZZk-S0jCpdQyFVw4-GCGjPeaPiNG_eo4kGL90hGPHxXC129lbmHY6q_aem_OjFwl5Sf7_DSGuMsusdl0Q" class="btn-link btn-superprof" target="_blank" rel="noopener">
+                    <a href="https://www.superprof.co.uk/professional-private-tutor-gcse-and-igcse-examiner-and-home-education-coordinator-with-over-decade-experience.html?fbclid=IwcGRvZgVleHRuA2FlbQIxMABicmlkETF6UW54WktDWVlzaFRzRHA1c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsefQkZZk-S0jCpdQyFVw4-GCGjPeaPiNG_eo4kGL90hGPHxXC129lbmHY6q_aem_OjFwl5Sf7_DSGuMsusdl0Q" class="btn-platform btn-superprof" target="_blank" rel="noopener">
                         Find me on Superprof
                     </a>
-                    <a href="https://tutorperch.com/t/matthew-t-3fc9?fbclid=IwcGRvZgVleHRuA2FlbQIxMABicmlkETF6UW54WktDWVlzaFRzRHA1c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsefQkZZk-S0jCpdQyFVw4-GCGjPeaPiNG_eo4kGL90hGPHxXC129lbmHY6q_aem_OjFwl5Sf7_DSGuMsusdl0Q" class="btn-link btn-tutorperch" target="_blank" rel="noopener">
+                    <a href="https://tutorperch.com/t/matthew-t-3fc9?fbclid=IwcGRvZgVleHRuA2FlbQIxMABicmlkETF6UW54WktDWVlzaFRzRHA1c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsefQkZZk-S0jCpdQyFVw4-GCGjPeaPiNG_eo4kGL90hGPHxXC129lbmHY6q_aem_OjFwl5Sf7_DSGuMsusdl0Q" class="btn-platform btn-tutorperch" target="_blank" rel="noopener">
                         Find me on Tutorperch
                     </a>
                 </div>
@@ -1852,7 +1882,7 @@
 
         <div class="container">
 
-            <div class="glass-card contact-box reveal">
+            <div class="glass-card static contact-box reveal">
 
                 <h2>
                     Ready to Get Started?
@@ -1883,15 +1913,15 @@
 
             <div class="socials">
 
-                <a href="https://www.facebook.com/profile.php?id=100090036200059">
+                <a href="https://www.facebook.com/profile.php?id=100090036200059" aria-label="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
 
-                <a href="#">
+                <a href="#" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
 
-                <a href="#">
+                <a href="#" aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
 
@@ -1905,13 +1935,20 @@
 
     </footer>
 
+    <!-- Back to top -->
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Scroll Animations -->
+    <!-- Scroll Animations + navbar behaviour -->
     <script>
 
         const reveals = document.querySelectorAll(".reveal");
+        const navbar = document.getElementById("mainNav");
+        const toTop = document.getElementById("toTop");
 
         function revealOnScroll() {
 
@@ -1928,9 +1965,62 @@
 
         }
 
-        window.addEventListener("scroll", revealOnScroll);
+        function onScroll() {
 
-        revealOnScroll();
+            revealOnScroll();
+
+            navbar.classList.toggle("scrolled", window.scrollY > 40);
+            toTop.classList.toggle("show", window.scrollY > 600);
+
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        onScroll();
+
+        toTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Highlight the nav link for the section currently on screen
+        const navLinks = Array.from(document.querySelectorAll('#mainNav .nav-link[href^="#"]'));
+
+        if ("IntersectionObserver" in window) {
+
+            const spy = new IntersectionObserver((entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        navLinks.forEach((link) => {
+                            link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+                        });
+
+                    }
+
+                });
+
+            }, { rootMargin: "-45% 0px -50% 0px" });
+
+            document.querySelectorAll("section[id]").forEach((section) => spy.observe(section));
+
+        }
+
+        // Close the mobile menu after tapping an in-page link
+        navLinks.forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                const menu = document.getElementById("navMenu");
+
+                if (menu.classList.contains("show")) {
+                    bootstrap.Collapse.getOrCreateInstance(menu).hide();
+                }
+
+            });
+
+        });
 
     </script>
 
